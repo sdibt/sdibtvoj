@@ -3,7 +3,7 @@ virtual-judge
 =============
 
 Holding contests using problems from other OJs!!  
-[点这里跳到中文版](#修改说明)
+[点这里跳到中文版](#修改说明1)
 
 ## Changes
 

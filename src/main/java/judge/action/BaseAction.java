@@ -31,6 +31,7 @@ import judge.remote.provider.uva.UVAInfo;
 import judge.remote.provider.uvalive.UVALiveInfo;
 import judge.remote.provider.zoj.ZOJInfo;
 import judge.remote.provider.sdibt.SDIBTInfo;
+import judge.remote.provider.sdut.SDUTInfo;
 import judge.remote.provider.ztrening.ZTreningInfo;
 import judge.service.IBaseService;
 import judge.service.JudgeService;
@@ -81,6 +82,7 @@ public class BaseAction extends ActionSupport implements ParameterAware {
         OJList.add(ACdreamInfo.INFO);
         OJList.add(TyvjInfo.INFO);
         OJList.add(SDIBTInfo.INFO);
+        OJList.add(SDUTInfo.INFO);
         Collections.sort(OJList, new Comparator<RemoteOjInfo>() {
             @Override
             public int compare(RemoteOjInfo oj1, RemoteOjInfo oj2) {
