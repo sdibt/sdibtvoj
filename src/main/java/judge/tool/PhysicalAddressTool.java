@@ -36,7 +36,7 @@ public class PhysicalAddressTool {
                 HttpHost host = new HttpHost("www.ip138.com");
                 DedicatedHttpClient client = SpringBean.getBean(DedicatedHttpClientFactory.class).build(host, "gb2312");
                 String html = client.get("/ips138.asp?ip=" + ip).getBody();
-                String physicalAddress = Tools.regFind(html, "<li>本站主数据：(.+?)</li>");
+                String physicalAddress = Tools.regFind(html, "<li>本站数据：(.+?)</li>");
                 if (!StringUtils.isBlank(physicalAddress)) {
                     addressMap.put(ip, physicalAddress);
                 }
