@@ -4,7 +4,6 @@ package judge.remote.provider.sdut;
 
 
 import judge.httpclient.HttpBodyValidator;
-
 import judge.httpclient.HttpStatusValidator;
 import judge.httpclient.DedicatedHttpClient;
 import judge.httpclient.SimpleHttpResponse;
@@ -35,8 +34,8 @@ public class SDUTLoginer extends RetentiveLoginer {
                 "user_name", account.getAccountId(), //
                 "password", account.getPassword());
         
-       client.post("/onlinejudge2/index.php/Home/Login/login", entity, HttpStatusValidator.SC_MOVED_TEMPORARILY);
-      client.post("/onlinejudge2/index.php/Home/Login/login", entity, new SimpleHttpResponseValidator() {
+     
+       client.post("/onlinejudge2/index.php/Home/Login/login", entity, new SimpleHttpResponseValidator() {
            @Override
             public void validate(SimpleHttpResponse response) throws Exception {
                 Validate.isTrue(response.getBody().contains("javascript:history.back(-1)"));
