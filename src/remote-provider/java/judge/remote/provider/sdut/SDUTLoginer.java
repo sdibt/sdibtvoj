@@ -36,12 +36,12 @@ public class SDUTLoginer extends RetentiveLoginer {
                 "password", account.getPassword());
         
        client.post("/onlinejudge2/index.php/Home/Login/login", entity, HttpStatusValidator.SC_MOVED_TEMPORARILY);
-//        client.post("/onlinejudge2/index.php/Home/Login/login", entity, new SimpleHttpResponseValidator() {
-  //         @Override
-    //        public void validate(SimpleHttpResponse response) throws Exception {
-      //          Validate.isTrue(response.getBody().contains("s"));
-        //    }
-       // });
+      client.post("/onlinejudge2/index.php/Home/Login/login", entity, new SimpleHttpResponseValidator() {
+           @Override
+            public void validate(SimpleHttpResponse response) throws Exception {
+                Validate.isTrue(response.getBody().contains("javascript:history.back(-1)"));
+            }
+        });
         
     }
 
