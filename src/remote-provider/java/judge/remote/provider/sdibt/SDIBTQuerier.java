@@ -32,7 +32,7 @@ public class SDIBTQuerier extends AuthenticatedQuerier {
         Validate.isTrue(matcher.find());
         
         SubmissionRemoteStatus status = new SubmissionRemoteStatus();
-        status.rawStatus = matcher.group(1).replaceAll("<.*?>", "").replaceAll("-[0-9]*","").replaceAll("\\*","").replace('_', ' ').trim();
+        status.rawStatus = matcher.group(1).replaceAll("<.*?>", "").replaceAll("-[0-9]*","").replaceAll("\\*","").replace('_', ' ').replace("%", "").trim();
         status.statusType = SubstringNormalizer.DEFAULT.getStatusType(status.rawStatus);
         if (status.statusType == RemoteStatusType.AC) {
             status.executionMemory = Integer.parseInt(matcher.group(2).replaceAll("\\D", ""));
