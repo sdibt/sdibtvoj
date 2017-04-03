@@ -36,11 +36,11 @@ public class SDUTCrawler extends SimpleCrawler {
         
         info.memoryLimit = (1024*Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\">Memory Limit:&nbsp;(\\d+?)KB</span>")));
         
-        info.description = (Tools.regFind(html, "<h4>Problem Description</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)</div>[\\s\\S]*?<h4>Input"));
+        info.description = (Tools.regFind(html, "<h4>Problem Description</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Input"));
         
-        info.input = (Tools.regFind(html, "<h4>Input</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)</div>[\\s\\S]*?<h4>Output"));
+        info.input = (Tools.regFind(html, "<h4>Input</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Output"));
         
-        info.output = (Tools.regFind(html, "<h4>Output</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)</div>[\\s\\S]*?<h4>Example Input"));
+        info.output = (Tools.regFind(html, "<h4>Output</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Example Input"));
         
         info.sampleInput = (Tools.regFind(html, "<h4>Example Input</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Example Output"));
         
