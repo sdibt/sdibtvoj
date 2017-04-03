@@ -35,7 +35,7 @@ public class SDUTLoginer extends RetentiveLoginer {
                 "user_name", account.getAccountId(), //
                 "password", account.getPassword());
         
-       client.post("/onlinejudge2/index.php/Home/Login/login", entity, new HttpBodyValidator("1", true));
+       client.post("/onlinejudge2/index.php/Home/Login/login", entity, HttpStatusValidator.SC_MOVED_TEMPORARILY);
 //        client.post("/onlinejudge2/index.php/Home/Login/login", entity, new SimpleHttpResponseValidator() {
   //         @Override
     //        public void validate(SimpleHttpResponse response) throws Exception {
