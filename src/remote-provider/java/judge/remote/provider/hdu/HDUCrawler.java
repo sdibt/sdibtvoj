@@ -35,8 +35,8 @@ public class HDUCrawler extends SimpleCrawler {
         info.description = (Tools.regFind(html, "> Problem Description </div>([\\s\\S]*?)<br /><[^<>]*?panel_title[^<>]*?>"));
         info.input = (Tools.regFind(html, "> Input </div>([\\s\\S]*?)<br /><[^<>]*?panel_title[^<>]*?>"));
         info.output = (Tools.regFind(html, "> Output </div>([\\s\\S]*?)<br /><[^<>]*?panel_title[^<>]*?>"));
-        info.sampleInput = (Tools.regFind(html, "> Sample Input </div>([\\s\\S]*?)<br /><[^<>]*?panel_title[^<>]*?>"));
-        info.sampleOutput = (Tools.regFind(html, "> Sample Output </div>([\\s\\S]*?)(<br /><[^<>]*?panel_title[^<>]*?>|<[^<>]*?><[^<>]*?><i>Hint)") + "</div></div>");
+        info.sampleInput = (Tools.regFind(html, "> Sample Input </div>([\\s\\S]*?)<br /><[^<>]*?panel_title[^<>]*?>")).replaceAll("<div style=\"font-family:Courier New,Courier,monospace;\">\\s","<div style=\"font-family:Courier New,Courier,monospace;\">");
+        info.sampleOutput = (Tools.regFind(html, "> Sample Output </div>([\\s\\S]*?)(<br /><[^<>]*?panel_title[^<>]*?>|<[^<>]*?><[^<>]*?><i>Hint)") + "</div></div>").replaceAll("<div style=\"font-family:Courier New,Courier,monospace;\">\\s","<div style=\"font-family:Courier New,Courier,monospace;\">").trim();
         info.hint = (Tools.regFind(html, "<i>Hint</i></div>([\\s\\S]*?)<br /><[^<>]*?panel_title[^<>]*?>"));
         if (!StringUtils.isEmpty(info.hint)){
             info.hint = "<pre>" + info.hint + "</pre>";
