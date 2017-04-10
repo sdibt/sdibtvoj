@@ -1,4 +1,5 @@
 $(function () {
+	//console.log("test");
 	if ($("#js_require_view_contest").length == 0) {
 		return;
 	}
@@ -39,6 +40,13 @@ $(function () {
         $("#time_total span").text(dateFormat(ti[0]));
     });
     DWREngine.setAsync(true);
+
+	//console.log(cid);
+	var $inst = $("#dialog-form-rank-setting");
+	if (!$inst.html()) {
+		$inst.load(basePath + "/contest/showRankSetting.action?cid=" + cid);
+	}
+		//updateRankInfo();
 
     /////////////////////   Slider    //////////////////////
 
@@ -100,6 +108,17 @@ $(function () {
             }
             //deal with rank update
             if (location.hash.indexOf("#rank") == 0) {
+	    var contestSwitch = Vjudge.storage.get("contest_switch_" + cid, 0);
+	    if (contestSwitch == 0) {
+		var ids = [cid];
+	    $("[name=ids]").each(function () {
+		    ids.push($(this).val());
+		    });
+	    console.log(ids);
+		Vjudge.storage.set("contest_switch_" + cid, 1);
+		Vjudge.storage.set("contest_" + cid, ids);
+	    updateRankInfo();
+	}
                 $("#contest_tabs").css("min-width", 400 + $("table#viewContest tr").length * 80 + "px");
             } else {
                 $("#contest_tabs").css("min-width", 0);
@@ -239,6 +258,7 @@ $(function () {
                     success : function (res) {
                         if (res == "success") {
                             $("#dialog-form-submit").dialog( "close" );
+                            hash[1] = "";
                             showStatus();
                             $("#reset").trigger("click");
                         } else {
