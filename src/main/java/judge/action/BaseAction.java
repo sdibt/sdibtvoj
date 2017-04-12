@@ -25,7 +25,7 @@ import judge.remote.provider.sgu.SGUInfo;
 import judge.remote.provider.spoj.SPOJInfo;
 import judge.remote.provider.tyvj.TyvjInfo;
 import judge.remote.provider.uestc.UESTCInfo;
-import judge.remote.provider.uestc_old.UESTCOldInfo;
+//import judge.remote.provider.uestc_old.UESTCOldInfo;
 import judge.remote.provider.ural.URALInfo;
 import judge.remote.provider.uva.UVAInfo;
 import judge.remote.provider.uvalive.UVALiveInfo;
@@ -73,7 +73,7 @@ public class BaseAction extends ActionSupport implements ParameterAware {
         OJList.add(ZTreningInfo.INFO);
         OJList.add(AizuInfo.INFO);
         OJList.add(LightOJInfo.INFO);
-        OJList.add(UESTCOldInfo.INFO);
+       // OJList.add(UESTCOldInfo.INFO);
         OJList.add(UESTCInfo.INFO);
         OJList.add(NBUTInfo.INFO);
         OJList.add(FZUInfo.INFO);
