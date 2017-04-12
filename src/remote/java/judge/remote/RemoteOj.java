@@ -20,7 +20,7 @@ public enum RemoteOj {
     SPOJ, //
     Tyvj,
     UESTC, //
-    UESTCOld, //
+    //UESTCOld, //
     URAL, //
     UVA, //
     UVALive, //
