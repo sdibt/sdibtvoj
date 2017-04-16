@@ -48,7 +48,7 @@ public class SDIBTCrawler extends SimpleCrawler {
         
         info.hint = (Tools.regFind(html, "<h2>HINT</h2>([\\s\\S]*?)<h2>Source</h2>"));
         
-        info.source = (Tools.regFind(html, "<h2>Source</h2>([\\s\\S]*?)<center>").replaceAll("<[\\s\\S]*?>", ""));
+        info.source = (Tools.regFind(html, "<h2>Source</h2>([\\s\\S]*?)<center>"));
     }
 
 }
