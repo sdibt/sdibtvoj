@@ -41,7 +41,7 @@ public class HDUCrawler extends SimpleCrawler {
         if (!StringUtils.isEmpty(info.hint)){
             info.hint = "<pre>" + info.hint + "</pre>";
         }
-        info.source = (Tools.regFind(html, "Source </div><div class=\"panel_content\">([\\s\\S]*?)<[^<>]*?panel_[^<>]*?>").replaceAll("<[\\s\\S]*?>", ""));
+        info.source = (Tools.regFind(html, "Source </div><div class=\"panel_content\">([\\s\\S]*?)</div>"));
     }
 
 }
