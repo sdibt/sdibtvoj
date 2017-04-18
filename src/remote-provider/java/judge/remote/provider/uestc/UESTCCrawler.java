@@ -50,8 +50,8 @@ public class UESTCCrawler extends SimpleCrawler {
         String _description = (String) problemJson.get("description");
         String _input = (String) problemJson.get("input");
         String _output = (String) problemJson.get("output");
-        String _sampleInput = "<pre>" + problemJson.get("sampleInput") + "</pre>";
-        String _sampleOutput = "<pre>" + problemJson.get("sampleOutput") + "</pre>";
+        String _sampleInput = ("<pre>" + problemJson.get("sampleInput") + "</pre>").replaceAll("\\[\"","").replaceAll("\"\\]","").replaceAll("\\\\n","<br>").replaceAll("\",\"","<br>---------------------------------------------------<br>");
+        String _sampleOutput = ("<pre>" + problemJson.get("sampleOutput") + "</pre>").replaceAll("\\[\"","").replaceAll("\"\\]","").replaceAll("\\\\n","<br>").replaceAll("\",\"","<br>---------------------------------------------------<br>");
         String _hint = (String) problemJson.get("hint");
         
         info.timeLimit = (((Long) problemJson.get("timeLimit")).intValue());
