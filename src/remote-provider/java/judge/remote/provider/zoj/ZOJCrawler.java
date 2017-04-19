@@ -40,7 +40,8 @@ public class ZOJCrawler extends SimpleCrawler {
         } else {
             info.description = (Tools.regFind(html, "KB[\\s\\S]*?</center><hr />([\\s\\S]*?)<hr />"));
         }
-        info.source = (Tools.regFind(html, "Source:\\s*<strong>([\\s\\S]*?)</strong><br />"));
+            String temp = (Tools.regFind(html, "Source:\\s*<strong>([\\s\\S]*?)</strong><br />"));
+            info.source = ("<a href=\"http://acm.zju.edu.cn/onlinejudge/searchProblem.do?contestId=1&titlefrom=0&authorfrom=0&sourcefrom=0&query=" + temp + "\">" + temp + "</a>");
     }
 
 }
