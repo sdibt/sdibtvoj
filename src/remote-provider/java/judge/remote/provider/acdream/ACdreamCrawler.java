@@ -36,7 +36,8 @@ public class ACdreamCrawler extends SimpleCrawler {
         info.sampleInput = Tools.regFind(html, "<h4>Sample Input</h4>([\\s\\S]*?)<h4>");
         info.sampleOutput = Tools.regFind(html, "<h4>Sample Output</h4>([\\s\\S]*?)<h4>");
         info.hint = Tools.regFind(html, "<h4>Hint</h4>([\\s\\S]*?)<h4>");
-        info.source = Tools.regFind(html, "<h4>Source</h4>([\\s\\S]*?)<h4>");
+        String temp = Tools.regFind(html, "<h4>Source</h4><div class=\"prob-content\">([\\s\\S]*?)</div><h4>").trim();
+        info.source = ("<a href=\"http://acdream.info/problem/list?search=" + temp + "\">" + temp + "</a>");
     }
 
 }
