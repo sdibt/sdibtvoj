@@ -37,7 +37,8 @@ public class HUSTCrawler extends SimpleCrawler {
         info.sampleInput = (Tools.regFind(html, "<dt> Sample Input </dt>\\s*<dd>([\\s\\S]*?)</dd>"));
         info.sampleOutput = (Tools.regFind(html, "<dt> Sample Output </dt>\\s*<dd>([\\s\\S]*?)</dd>"));
         info.hint = (Tools.regFind(html, "<dt> Hint </dt>\\s*<dd>([\\s\\S]*?)</dd>"));
-        info.source = (Tools.regFind(html, "<dt> Source </dt>\\s*<dd>([\\s\\S]*?)</dd>"));
+        String temp = (Tools.regFind(html, "<dt> Source </dt>\\s*<dd>([\\s\\S]*?)</dd>").trim());
+        info.source = ("<a href=\"http://acm.hust.edu.cn/problem/search?text=" + temp + "&area=source\">" + temp + "</a>");
     }
 
 }
