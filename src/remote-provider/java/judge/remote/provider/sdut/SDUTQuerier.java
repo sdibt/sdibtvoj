@@ -39,7 +39,7 @@ public class SDUTQuerier extends AuthenticatedQuerier {
             status.executionTime = Integer.parseInt(matcher.group(2).replaceAll("\\D", ""));
         } else if (status.statusType == RemoteStatusType.CE) {
             html = client.get("/onlinejudge2/index.php/Home/Compile/view/sid/" + info.remoteRunId).getBody();
-            status.compilationErrorInfo = Tools.regFind(html, "<pre>([.\\s\\S]+?)</pre>");
+            status.compilationErrorInfo = Tools.regFind(html, "<div class=\"prob-content\">[\\s]*(<pre>[.\\s\\S]+?</pre>)[\\s]*</div>");
         }
         return status;
     }
