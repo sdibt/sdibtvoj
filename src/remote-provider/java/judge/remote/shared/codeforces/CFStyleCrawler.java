@@ -25,7 +25,7 @@ public abstract class CFStyleCrawler extends SimpleCrawler {
         info.input = Tools.regFind(html, "<div class=\"section-title\">\\s*Input\\s*</div>([\\s\\S]*?)</div><div class=\"output-specification\">");
         info.output = Tools.regFind(html, "<div class=\"section-title\">\\s*Output\\s*</div>([\\s\\S]*?)</div><div class=\"sample-tests\">");
         info.sampleInput = "<style type=\"text/css\">.input, .output {border: 1px solid #888888;} .output {margin-bottom:1em;position:relative;top:-1px;} .output pre,.input pre {background-color:#EFEFEF;line-height:1.25em;margin:0;padding:0.25em;} .title {background-color:#FFFFFF;border-bottom: 1px solid #888888;font-family:arial;font-weight:bold;padding:0.25em;}</style>" + Tools.regFind(html, "<div class=\"sample-test\">([\\s\\S]*?)</div>\\s*</div>\\s*</div>");
-        info.hint = Tools.regFind(html, "<div class=\"section-title\">\\s*Note\\s*</div>([\\s\\S]*?)</div></div></div></div>");
+        info.hint = Tools.regFind(html, "<div class=\"section-title\">\\s*Note\\s*</div>([\\s\\S]*?)</div></div>");
         info.source = Tools.regFind(html, "(<a[^<>]+/contest/\\d+\">.+?</a>)");
     }
 
