@@ -37,7 +37,7 @@ public class CSUCrawler extends SimpleCrawler {
         info.sampleInput = (Tools.regFind(html, "<h2.*?>Sample Input</h2>([\\s\\S]*?)\\s*</div>\\s*<div name=\"Sample Output").replaceAll("<span", "<pre").replaceAll("</span>", "</pre>"));
         info.sampleOutput = (Tools.regFind(html, "<h2.*?>Sample Output</h2>([\\s\\S]*?)\\s*</div>\\s*<div name=\"Hint").replaceAll("<span", "<pre").replaceAll("</span>", "</pre>"));
         info.hint = (Tools.regFind(html, "<h2.*?>Hint</h2>([\\s\\S]*?)\\s*</div>\\s*<div name=\"Source"));
-        info.source = (Tools.regFind(html, "<h2.*?>Source</h2>([\\s\\S]*?)</div>"));
+        info.source = (Tools.regFind(html, "<h2.*?>Source</h2>([\\s\\S]*?)</div>").replaceAll("<p>","").replaceAll("</p>",""));
     }
 
 }
