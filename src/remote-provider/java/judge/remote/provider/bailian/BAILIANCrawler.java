@@ -43,7 +43,7 @@ public class BAILIANCrawler extends SimpleCrawler {
         
         info.sampleInput = (Tools.regFind(html, "<dt>\\s*样例输入\\s*</dt><dd>(<pre>[\\s\\S]+?</pre>)</dd><dt>\\s*样例输出"));
         
-        info.sampleOutput = (Tools.regFind(html, "<dt>\\s*样例输出\\s*</dt><dd>(<pre>[\\s\\S]+?</pre>)</dd><dt>"));
+        info.sampleOutput = (Tools.regFind(html, "<dt>\\s*样例输出\\s*</dt><dd>(<pre>[\\s\\S]+?</pre>)</dd>"));
         
         info.hint = (Tools.regFind(html, "<dt>\\s*提示\\s*</dt><dd>([\\s\\S]+?)</dd><dt>"));
         
