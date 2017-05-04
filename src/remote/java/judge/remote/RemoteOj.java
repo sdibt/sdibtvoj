@@ -20,7 +20,7 @@ public enum RemoteOj {
     SPOJ, //
     Tyvj,
     UESTC, //
-    //UESTCOld, //
+//    UESTCOld, //
     URAL, //
     UVA, //
     UVALive, //
@@ -28,5 +28,6 @@ public enum RemoteOj {
     ZTrening, //
     SDIBT,//
     SDUT,//
+    BAILIAN,//
 
 }
