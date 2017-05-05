@@ -12,6 +12,7 @@ import judge.remote.submitter.CanonicalSubmitter;
 import judge.remote.submitter.SubmissionInfo;
 import judge.tool.Tools;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.springframework.stereotype.Component;
 
@@ -60,12 +61,12 @@ public class BAILIANSubmitter extends CanonicalSubmitter {
             HttpEntity entity = SimpleNameValueEntityFactory.create(
             "problemNumber", info.remoteProblemId, //
             "language", lang, //
-            "source", info.sourceCode,
+            "source",  new String(Base64.encodeBase64(info.sourceCode.getBytes())),
+            "sourceEncode", "base64",
             "contestId","3"
         );
-//        System.out.println(info.remotelanguage);
         client.post("/api/solution/submit/", entity, HttpStatusValidator.SC_OK);
-        return null;
+             return null;
     }
 
 }
