@@ -31,7 +31,7 @@ public class CodeForcesSubmitter extends CanonicalSubmitter {
     protected boolean needLogin() {
         return true;
     }
-
+    @Override
     protected Integer getMaxRunId(SubmissionInfo info, DedicatedHttpClient client, boolean submitted) throws IOException {
        // String html = client.get("/submissions/" + info.remoteAccountId).getBody();
         //Matcher matcher = Pattern.compile("submissionId=\"(\\d+)\"(?:[\\s\\S](?!tr))*" + info.remoteProblemId).matcher(html);
