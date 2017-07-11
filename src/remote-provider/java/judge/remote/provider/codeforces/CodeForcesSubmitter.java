@@ -31,14 +31,15 @@ public class CodeForcesSubmitter extends CanonicalSubmitter {
     protected boolean needLogin() {
         return true;
     }
-    @Override
-    protected Integer getMaxRunId(SubmissionInfo info, DedicatedHttpClient client, boolean submitted) throws IOException {
+    @Override 
+   protected Integer getMaxRunId(SubmissionInfo info, DedicatedHttpClient client, boolean submitted) throws IOException {
        // String html = client.get("/submissions/" + info.remoteAccountId).getBody();
         //Matcher matcher = Pattern.compile("submissionId=\"(\\d+)\"(?:[\\s\\S](?!tr))*" + info.remoteProblemId).matcher(html);
         //return matcher.find() ? Integer.parseInt(matcher.group(1)) : -1; 
         String html = client.get("/problemset/status").getBody();
         // System.out.print(html);
-        Matcher matcher = Pattern.compile("submissionId=\"(\\d+)\">[\\s\\S]*>" +  info.remoteAccountId + "</a>").matcher(html);
+        String num=info.remoteProblemId.replaceAll("\\D.*", "");
+        Matcher matcher = Pattern.compile("href=\"/contest/" + num + "/submission/\\d+\"\\ssubmissionId=\"(\\d+)\">[\\s\\S]*>" +  info.remoteAccountId + "</a>").matcher(html);
         return matcher.find() ? Integer.parseInt(matcher.group(1)) : -1;
     }
 
