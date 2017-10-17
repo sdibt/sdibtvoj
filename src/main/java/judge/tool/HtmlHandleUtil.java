@@ -74,8 +74,8 @@ public class HtmlHandleUtil {
                 if(!src.startsWith("http://") && !src.startsWith("https://")){
                     continue;
                 }
-                while(src.contains("acm.hdu.edu.cn/../")){
-                    src = src.replace("acm.hdu.edu.cn/../", "acm.hdu.edu.cn/");
+                while(src.contains("acm.split.hdu.edu.cn/../")){
+                    src = src.replace("acm.split.hdu.edu.cn/../", "acm.split.hdu.edu.cn/");
                 }
                 String folder = src.replace("http://", "").replace("https://", "")
                         .replace("www.", "").replace("acm.", "")
