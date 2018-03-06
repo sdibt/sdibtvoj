@@ -32,9 +32,10 @@ public class SDUTCrawler extends SimpleCrawler {
 
         info.title = Tools.regFind(html, "<h3 class=\"problem-header\">(.+?)</h3>").trim();
         
-        info.timeLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\">Time Limit:&nbsp;(\\d+?)MS</span>")));
-        
-        info.memoryLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\">Memory Limit:&nbsp;(\\d+?)KB</span>")));
+        info.timeLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\">Time Limit:&nbsp;(\\d+?) ms</span>")));
+
+        info.memoryLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\" style=\"margin-left: 12px;\">Memory Limit:&nbsp;(\\d+?) KiB</span>"")));
+
         
         info.description = (Tools.regFind(html, "<h4>Problem Description</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Input"));
         
