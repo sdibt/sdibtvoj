@@ -30,8 +30,8 @@ public class SDUTSubmitter extends CanonicalSubmitter {
     @Override
     protected Integer getMaxRunId(SubmissionInfo info, DedicatedHttpClient client, boolean submitted) {
         String html = client.get("/onlinejudge2/index.php/Home/Solution/status?username=" + info.remoteAccountId + "&pid=" + info.remoteProblemId).getBody();
-        Matcher matcher = Pattern.compile("<tr data-spj=[\\s\\S]+?(>|class=[\\S]+?>)(<input[\\w]+?>|)[\\s]+?<td>(\\d+?)</td>[\\s\\S]+?<td class=\"nowrap-td\">[\\s]<a href=\"/onlinejudge2/index.php/Home/User/info/uid/\\d+?\\.html").matcher(html);
-        return matcher.find() ? Integer.parseInt(matcher.group(1)) : -1;
+        Matcher matcher = Pattern.compile("<tr data-spj=[\\s\\S]+?(>|class=[\\S]+?>)[\\s]+?(<input[\\w]+?>|)[\\s]+?<td>(\\d+?)</td>[\\s\\S]+?<td class=\"nowrap-td\">").matcher(html);
+        return matcher.find() ? Integer.parseInt(matcher.group(0).replaceAll("<.*?>", "").trim()) : -1;
     }
 
     @Override
