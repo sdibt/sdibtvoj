@@ -47,7 +47,7 @@ public class SDUTCrawler extends SimpleCrawler {
         
         info.sampleOutput = (Tools.regFind(html, "<h4>Sample Output</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Hint"));
         
-        info.hint = (Tools.regFind(html, "<h2>Hint</h2>([\\s\\S]*?)<h2>Source</h2>"));
+        info.hint = (Tools.regFind(html, "<h4>Hint</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)<h4>Source</h4>"));
         
         info.source = (Tools.regFind(html, "<h4>Author</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)</div>"));
     }
