@@ -41,13 +41,13 @@ public class SDUTCrawler extends SimpleCrawler {
         
         info.input = (Tools.regFind(html, "<h4>Input</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Output"));
         
-        info.output = (Tools.regFind(html, "<h4>Output</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Example Input"));
+        info.output = (Tools.regFind(html, "<h4>Output</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Sample Input"));
         
-        info.sampleInput = (Tools.regFind(html, "<h4>Example Input</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Example Output"));
+        info.sampleInput = (Tools.regFind(html, "<h4>Sample Input</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Sample  Output"));
         
-        info.sampleOutput = (Tools.regFind(html, "<h4>Example Output</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Hint"));
+        info.sampleOutput = (Tools.regFind(html, "<h4>Sample Output</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Hint"));
         
-//        info.hint = (Tools.regFind(html, "<h2>HINT</h2>([\\s\\S]*?)<h2>Source</h2>"));
+        info.hint = (Tools.regFind(html, "<h2>Hint</h2>([\\s\\S]*?)<h2>Source</h2>"));
         
         info.source = (Tools.regFind(html, "<h4>Author</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)</div>"));
     }
