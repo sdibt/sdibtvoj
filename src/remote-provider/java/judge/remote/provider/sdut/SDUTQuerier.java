@@ -27,7 +27,7 @@ public class SDUTQuerier extends AuthenticatedQuerier {
     @Override
     protected SubmissionRemoteStatus query(SubmissionInfo info, RemoteAccount remoteAccount, DedicatedHttpClient client) {
         String html = client.get("/onlinejudge2/index.php/Home/Solution/status?runid=" + info.remoteRunId).getBody();
-        Pattern pattern = Pattern.compile(info.remoteRunId +"</td>[\\s\\S]+?<td><a href=\".+?\">.+?</a></td>[\\s\\S]+?<td><a href=\".+?\">\\d+?</a></td>[\\s\\S]+?<td class=\".+?\">(.+?)</td>[\\s\\S]+?<td>(\\d+?)ms</td>[\\s\\S]+?<td>(\\d+?)kb</td>");
+        Pattern pattern = Pattern.compile(info.remoteRunId +"</td>[\\s]+?<td class=[\\S\\s]+?>[\\s]+?<a href=[\\s\\S]+?</a>[\\s]+?</td>[\\s]+?<td><a href=[\\S]+?>\\d+?</a></td>[\\s\\S]+?<td class=\".+?\">(.+?)</td>[\\s]+?<td>(\\d+?)[\\s]+?ms</td>[\\s\\S]+?<td>(\\d+?)[\\s]+?KiB</td>");
         Matcher matcher = pattern.matcher(html);
         Validate.isTrue(matcher.find());
         
