@@ -32,21 +32,22 @@ public class SDUTCrawler extends SimpleCrawler {
 
         info.title = Tools.regFind(html, "<h3 class=\"problem-header\">(.+?)</h3>").trim();
         
-        info.timeLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\">Time Limit:&nbsp;(\\d+?)MS</span>")));
-        
-        info.memoryLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\">Memory Limit:&nbsp;(\\d+?)KB</span>")));
+        info.timeLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\">Time Limit:&nbsp;(\\d+?) ms</span>")));
+
+        info.memoryLimit = (Integer.parseInt(Tools.regFind(html, "<span class=\"user-black\" style=\"margin-left: 12px;\">Memory Limit:&nbsp;(\\d+?) KiB</span>"")));
+
         
         info.description = (Tools.regFind(html, "<h4>Problem Description</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Input"));
         
         info.input = (Tools.regFind(html, "<h4>Input</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Output"));
         
-        info.output = (Tools.regFind(html, "<h4>Output</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Example Input"));
+        info.output = (Tools.regFind(html, "<h4>Output</h4>[\\s\\S]*?(<div class=\"prob-content\">[.\\s\\S]+?</div>[\\s\\S]*?)<h4>Sample Input"));
         
-        info.sampleInput = (Tools.regFind(html, "<h4>Example Input</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Example Output"));
+        info.sampleInput = (Tools.regFind(html, "<h4>Sample Input</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Sample  Output"));
         
-        info.sampleOutput = (Tools.regFind(html, "<h4>Example Output</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Hint"));
+        info.sampleOutput = (Tools.regFind(html, "<h4>Sample Output</h4>[\\s\\S]*?<div class=\"prob-content\">[\\s\\S]*?(<pre>[.\\s\\S]+?</pre>)[\\s\\S]*?</div>[\\s\\S]*?<h4>Hint"));
         
-//        info.hint = (Tools.regFind(html, "<h2>HINT</h2>([\\s\\S]*?)<h2>Source</h2>"));
+        info.hint = (Tools.regFind(html, "<h4>Hint</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)<h4>Source</h4>"));
         
         info.source = (Tools.regFind(html, "<h4>Author</h4>[\\s\\S]*?<div class=\"prob-content\">([.\\s\\S]+?)</div>"));
     }

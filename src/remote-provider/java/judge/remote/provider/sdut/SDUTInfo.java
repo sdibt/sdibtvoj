@@ -10,7 +10,7 @@ public class SDUTInfo {
     public static final RemoteOjInfo INFO = new RemoteOjInfo( //
             RemoteOj.SDUT, //
             "SDUT", //
-            new HttpHost("www.sdutacm.org") //
+            new HttpHost("acm.sdut.edu.cn") //
     );
     
     static {
