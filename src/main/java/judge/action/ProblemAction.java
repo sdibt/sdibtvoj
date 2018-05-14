@@ -705,6 +705,6 @@ public class ProblemAction extends BaseAction{
         return title;
     }
     public void setTitle(String title) {
-        this.title = title;
+        this.title = Tools.utf8ToGb2312(title);
     }
 }

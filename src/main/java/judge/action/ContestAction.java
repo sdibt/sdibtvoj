@@ -145,7 +145,7 @@ public class ContestAction extends BaseAction {
         String contestType = getParameter("contestType"); // 0-contest 1-replay
         String contestRunningStatus = getParameter("contestRunningStatus"); // 0-all 1-scheduled 2-running 3-ended
         String contestOpenness = getParameter("contestOpenness"); // 0-all 1-public 2-private
-        String title = getParameter("title");
+        String title = Tools.utf8ToGb2312(getParameter("title"));
         String manager = getParameter("manager");
 
 
