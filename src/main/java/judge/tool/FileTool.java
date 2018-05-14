@@ -94,19 +94,29 @@ public class FileTool {
         ato.filter(bis,bid);
         ImageIO.write(bid, "jpeg", fo);
     }
-    
-    public static void writeFile(String path, String content) throws IOException {
+
+    public static void writeFile(String path, String content) {
         PrintWriter writer = null;
         File file = new File(path);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        log.info("Write file: " + file.getAbsolutePath());
+        boolean newFile = true;
         try {
+             if (!file.exists()) {
+                 newFile = file.createNewFile();
+             }
+        } catch (Exception e) {
+            newFile = false;
+        }
+        if (!newFile) return;
+
+        try {
+            log.info("Write file: " + file.getAbsolutePath());
+
             writer = new PrintWriter(path, "UTF-8");
             writer.println(content);
+        } catch (Exception e) {
+            log.info("e: " + e);
         } finally {
-            writer.close();
+            if (writer != null) writer.close();
         }
     }
 
@@ -114,7 +124,7 @@ public class FileTool {
         if (!file.exists()) {
             file.createNewFile();
         }
-        
+
 //        log.info("Write file: " + file.getAbsolutePath());
         BufferedWriter out = null;
         try {
@@ -124,6 +134,6 @@ public class FileTool {
             out.flush();
             out.close();
         }
-        
+
     }
 }
