@@ -30,10 +30,10 @@ public class CodeForcesLoginer extends RetentiveLoginer {
                 "csrf_token", token.csrf_token, //
                 "_tta", token._tta, //
                 "action", "enter", //
-                "handle", account.getAccountId(), //
+                "handleOrEmail", account.getAccountId(), //
                 "password", account.getPassword(), //
                 "remember", "on");
-        client.post("/enter", entity, HttpStatusValidator.SC_OK);
+        client.post("/enter", entity, HttpStatusValidator.SC_MOVED_TEMPORARILY);
     }
 
 }
