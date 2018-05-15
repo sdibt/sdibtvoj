@@ -27,7 +27,7 @@ public abstract class CFStyleLoginer extends RetentiveLoginer {
                 "handle", account.getAccountId(), //
                 "password", account.getPassword(), //
                 "remember", "on");
-        client.post("/enter", entity, HttpStatusValidator.SC_OK);
+        client.post("/enter", entity, HttpStatusValidator.SC_MOVED_TEMPORARILY);
     }
 
 }
