@@ -33,13 +33,13 @@ public class CodeForcesSubmitter extends CanonicalSubmitter {
     }
     @Override 
    protected Integer getMaxRunId(SubmissionInfo info, DedicatedHttpClient client, boolean submitted) throws IOException {
-//        String html = client.get("/submissions/" + info.remoteAccountId).getBody();
+        String html = client.get("/submissions/" + info.remoteAccountId).getBody();
 //        Matcher matcher = Pattern.compile("submissionId=\"(\\d+)\"(?:[\\s\\S](?!tr))*" + info.remoteProblemId).matcher(html);
 //        return matcher.find() ? Integer.parseInt(matcher.group(1)) : -1;
-        String html = client.get("/problemset/status/").getBody();
+//        String html = client.get("/problemset/status/").getBody();
 //        System.out.print(html);
         String num=info.remoteProblemId.replaceAll("\\D.*", "");
-        Matcher matcher = Pattern.compile("href=\"/contest/" + num + "/submission/\\d+\"\\ssubmissionId=\"(\\d+)\">[\\s\\S]*>" +  info.remoteAccountId + "</a>").matcher(html);
+        Matcher matcher = Pattern.compile("href=\"/contest/" + num + "/submission/\\d+\"\\ssubmissionId=\"(\\d+)\">[\\s\\S]*>").matcher(html);
 //        String html = client.get("/api/user.status?handle=" + info.remoteAccountId + "&from=1&count=1").getBody();
 //        Matcher matcher = Pattern.compile("\"result\":[{\"id\":(\\d+),\"contestId\"[\\s\\S]+?" + info.remoteProblemId).matcher(html);
         return matcher.find() ? Integer.parseInt(matcher.group(1)) : -1;
