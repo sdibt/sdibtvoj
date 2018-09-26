@@ -10,7 +10,7 @@ public class HYSBZInfo {
     public static final RemoteOjInfo INFO = new RemoteOjInfo( //
             RemoteOj.HYSBZ, //
             "HYSBZ", //
-            new HttpHost("www.lydsy.com") //
+            HttpHost.create("https://www.lydsy.com") //
     );
     
     static {
