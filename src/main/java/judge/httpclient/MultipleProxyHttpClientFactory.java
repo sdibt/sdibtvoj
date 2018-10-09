@@ -69,7 +69,7 @@ public class MultipleProxyHttpClientFactory {
             }
         });
         SSLContext sslContext = contextBuilder.build();
-        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, new X509HostnameVerifier() {
+        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, new String[]{"TLSv1.2"}, null, new X509HostnameVerifier() {
             @Override
             public void verify(String host, SSLSocket ssl) throws IOException {
             }

@@ -17,6 +17,14 @@ import org.slf4j.LoggerFactory;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.X509TrustManager;
+
 public class FileDownloader {
 
     private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36";
@@ -33,10 +41,14 @@ public class FileDownloader {
         log.info(urlStr);
         FileOutputStream fos = null;
         try {
+            if (urlStr.contains("https")) {
+                enableTLSv2();
+            }
             Connection connection = Jsoup.connect(urlStr)
                     .header("Referer",urlStr.substring(0,urlStr.indexOf("/", "https://".length())))
                     .userAgent(USER_AGENT)
-                    .timeout(10000).ignoreContentType(true);
+                    .timeout(10000)
+                    .ignoreContentType(true);
 
             File saveDir = new File(savePath);
             if(!saveDir.exists()){
@@ -90,6 +102,34 @@ public class FileDownloader {
     public static void  downLoadFromUrl(String urlStr,String savePath) throws Exception{
         String fileName = urlStr.substring(urlStr.lastIndexOf("/") + 1);
         downLoadFromUrl(urlStr,savePath,fileName);
+    }
+
+    public static void enableTLSv2() throws Exception {
+        HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[0];
+            }
+
+            @Override
+            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+            }
+
+            @Override
+            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+            }
+        }};
+
+        SSLContext sc = SSLContext.getInstance("TLSv1.2");
+        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
     }
 
 }
