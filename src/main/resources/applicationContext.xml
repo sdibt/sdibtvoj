@@ -79,7 +79,7 @@
         </property>
     </bean>
 
-    <bean id="sessionCleanerTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <bean id="sessionCleanerTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail">
             <ref bean="sessionCleanerJobDetail" />
         </property>
@@ -99,7 +99,7 @@
         </property>
     </bean>
 
-    <bean id="tempFileCleanerTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <bean id="tempFileCleanerTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail">
             <ref bean="tempFileCleanerJobDetail" />
         </property>
