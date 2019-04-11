@@ -47,7 +47,7 @@ public abstract class CFStyleQuerier extends AuthenticatedQuerier {
     @Override
     protected SubmissionRemoteStatus query(SubmissionInfo info, RemoteAccount remoteAccount, DedicatedHttpClient client) {
         String html = client.get("/api/user.status?handle=" + info.remoteAccountId + "&from=1&count=20").getBody();
-        
+
         try {
             Map<String, Object> json = (Map<String, Object>) JSONUtil.deserialize(html);
             List<Map<String, Object>> results = (List<Map<String, Object>>)json.get("result");
@@ -56,7 +56,7 @@ public abstract class CFStyleQuerier extends AuthenticatedQuerier {
                 if(!Integer.toString(runId).equals(info.remoteRunId)){
                     continue;
                 }
-               
+
                 SubmissionRemoteStatus status = new SubmissionRemoteStatus();
                 String verdict = (String)result.get("verdict");
                 status.rawStatus = statusMap.get(verdict);
