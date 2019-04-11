@@ -54,7 +54,6 @@ public class SDUTSubmitter extends CanonicalSubmitter {
            // "lang", info.remotelanguage, //
             "code", info.sourceCode
         );
-        System.out.println(info.remotelanguage);
         client.post("/onlinejudge2/index.php/Home/Solution/submitsolution", entity, HttpStatusValidator.SC_MOVED_TEMPORARILY);
         return null;
     }
