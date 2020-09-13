@@ -1,7 +1,10 @@
 package judge.remote.provider.hdu;
 
+import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Base64;
+import java.io.UnsupportedEncodingException;
 
 import judge.httpclient.DedicatedHttpClient;
 import judge.httpclient.HttpStatusValidator;
@@ -36,15 +39,24 @@ public class HDUSubmitter extends CanonicalSubmitter {
 
     @Override
     protected String submitCode(SubmissionInfo info, RemoteAccount remoteAccount, DedicatedHttpClient client) {
-        HttpEntity entity = SimpleNameValueEntityFactory.create( //
+       
+	String willSubmitCodeString;
+        try {
+	    willSubmitCodeString = Base64.getEncoder().encodeToString(URLEncoder.encode(info.sourceCode,"utf-8").getBytes("utf-8"));
+        } catch (UnsupportedEncodingException e) {
+	    willSubmitCodeString = "";
+	}
+	HttpEntity entity = SimpleNameValueEntityFactory.create( //
             "check", "0", //
             "language", info.remotelanguage, //
             "problemid", info.remoteProblemId, //
-            "usercode", info.sourceCode, //
+            "_usercode", willSubmitCodeString, //
             getCharset() //
         );
+
         client.post("/submit.php?action=submit", entity, HttpStatusValidator.SC_MOVED_TEMPORARILY);
         return null;
     }
 
 }
+
