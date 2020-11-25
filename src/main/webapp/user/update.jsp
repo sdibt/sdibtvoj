@@ -38,11 +38,11 @@
 				</tr>
 				<tr>
 					<td>QQ:</td>
-					<td><s:textfield name="qq" value="%{qq}" size="50" /></td>
+					<td><s:textfield name="qq" value="*********" size="50" /></td>
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td><s:textfield name="email" value="%{email}" size="50" /></td>
+					<td><s:textfield name="email" value="*******" size="50" /></td>
 				</tr>
 				<tr>
 					<td class="form_title">Blog:</td>
