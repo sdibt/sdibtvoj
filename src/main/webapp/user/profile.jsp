@@ -25,11 +25,11 @@
 			</tr>
 			<tr>
 				<td>QQ:</td>
-				<td><s:property value="user.qq"/></td>
+				<td><s:property value="****"/></td>
 			</tr>
 			<tr>
 				<td>Email:</td>
-				<td><s:property value="user.email"/></td>
+				<td><s:property value="****"/></td>
 			</tr>
 			<tr>
 				<td>Blog:</td>
