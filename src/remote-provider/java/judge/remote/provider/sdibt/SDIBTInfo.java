@@ -10,7 +10,7 @@ public class SDIBTInfo {
     public static final RemoteOjInfo INFO = new RemoteOjInfo( //
             RemoteOj.SDIBT, //
             "SDIBT", //
-            new HttpHost("acm.sdibt.edu.cn") //
+            new HttpHost("acm.sdtbu.edu.cn", 443, "https") //
     );
     
     static {
