@@ -23,7 +23,7 @@ jobs:
     - name: Build with Maven
       run: mvn package 
     - name: staging
-      run:  cp target/*.jar staging
+      run:  cp target/*.war staging
     - uses: actions/upload-artifact@v2
       with:
         name: Package
