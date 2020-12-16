@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionContext;
 public class CookieUtil {
     
     public static void addCookie(ActionContext actionContext, String name, String value) {
-        addCookie(actionContext, name, value, 60 * 60 * 24 * 365);
+        addCookie(actionContext, name, value, 60 * 60 * 24 );
     }
     
     public static void addCookie(ActionContext actionContext, String name, String value, int maxAge) {
