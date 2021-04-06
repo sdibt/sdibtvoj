@@ -10,7 +10,7 @@ public class CodeForcesInfo {
     public static final RemoteOjInfo INFO = new RemoteOjInfo( //
             RemoteOj.CodeForces, //
             "CodeForces", //
-            new HttpHost("codeforces.com") //
+            new HttpHost("codeforces.com", 443, "https") //
     );
     
     static {
