@@ -22,7 +22,7 @@ public class CodeForcesCrawler extends CFStyleCrawler {
     protected String getProblemUrl(String problemId) {
         String contestNum = problemId.replaceAll("\\D.*", "");
         String problemNum = problemId.replaceAll("^\\d*", "");
-        return getHost().toURI() + "/problemset/problem/" + problemNum + "/" + contestNum ;
+        return getHost().toURI() + "/problemset/problem/" + contestNum + "/" + problemNum ;
     }
 
     @Override
