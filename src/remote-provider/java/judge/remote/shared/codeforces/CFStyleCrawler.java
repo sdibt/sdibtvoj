@@ -17,7 +17,7 @@ public abstract class CFStyleCrawler extends SimpleCrawler {
         info.title = Tools.regFind(html, "<div class=\"title\">\\s*" + problemNum + "\\. ([\\s\\S]*?)</div>").trim();
         Double timeLimit ;
         try {
-            timeLimit = 1000 * Double.parseDouble(Tools.regFind(html, "([\\d\\.]+) seconds?\\s*"));
+             timeLimit = 1000 * Double.parseDouble(Tools.regFind(html, "</div>([\\d\\.]+) seconds?\\s*</div>"));
         } catch (Exception ee) {
             timeLimit = 1000 * Double.parseDouble(Tools.regFind(html, "</div>([\\d\\.]+) s?\\s*</div>"));
         }
